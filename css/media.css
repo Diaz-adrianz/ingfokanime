@@ -1,15 +1,18 @@
 @media only screen and ( max-width: 768px ) {
     * {
-        font-size: 12px;
+        font-size: 13px;
     }
     #btn-aside {
         display: flex;
+        transition: .2s;
+        animation: pulse 1s ease-in-out 4;
+        transform: scale(1)
     }
     .sidemain aside {
         position: fixed;
         z-index: 99;
         background-color: var(--silver);
-        width: 60%;
+        width: 70%;
         height: 100vh;
         max-width: 250px;
         top: 0;
