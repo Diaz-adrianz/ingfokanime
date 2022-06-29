@@ -73,7 +73,7 @@ function fetching ( obj ) {
                         result.innerHTML = `
                         <figure class="empty">
                             <img src="img/error.svg" alt="">
-                            <figcaption>Tidak ada hasil yang ditemukan!</figcaption>
+                            <figcaption>Erorr! Segera refresh halaman ini!</figcaption>
                         </figure>
                         `
                         return false
@@ -389,7 +389,7 @@ function displaying ( type, data, clean = true ) {
 function anime_card_template ( data ) {
     let ani = {
         img: data.images ? 
-                data.images.jpg['image_url'] : 'img/sky.jpg',
+                data.images.jpg['image_url'] : 'img/thumb.png',
         genre: data.genres.length != 0 ? 
                 data.genres[0]['name'] : 'none' ,
         demo: data.demographics.length != 0 ? 
@@ -426,7 +426,7 @@ function anime_card_template ( data ) {
 function char_card_template ( data, rank = 1 ) {
     let ani = {
         img: data.images ? 
-                data.images.jpg['image_url'] : 'img/sky.jpg',
+                data.images.jpg['image_url'] : 'img/thumb.png',
     }
     return `
     <div class="card" onclick="get_detail(this)" data-id="${ data['mal_id'] }">
@@ -451,7 +451,7 @@ function char_card_template ( data, rank = 1 ) {
 function anime_modal_template ( data ) {
     let ani = {
         img: data.images ? 
-                data.images.jpg['image_url'] : 'img/sky.jpg',   
+                data.images.jpg['image_url'] : 'img/thumb.png',   
         looping: arr => {
             let str = []
             if ( arr.length != 0 ) {
@@ -592,7 +592,7 @@ function anime_modal_template ( data ) {
 function char_modal_template ( data ) {
     let chr = {
         img: data.images ? 
-                data.images.jpg['image_url'] : 'img/sky.jpg',
+                data.images.jpg['image_url'] : 'img/thumb.png',
         cardLoop: arr => {
             let str = ""
             if ( arr.length != 0 ) {
