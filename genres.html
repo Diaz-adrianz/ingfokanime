@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- MY CSS  -->
+    <link rel="stylesheet" href="css/core.css">
+    <link rel="stylesheet" href="css/component.css">
+    <link rel="stylesheet" href="css/media.css">
+
+    <!-- ICON BY GOOGLE  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
+    <title> genres - ingfokanime | by daz</title>
+</head>
+<body>
+
+    <!-- backdrop  -->
+    <div class="backdrop fade" onclick="bd_close(this)"></div>
+
+    <!-- modal detail  -->
+    <div class="modal fade" id="modaldetail">
+        
+    </div>
+
+    <!-- aside menu open  -->
+    <button id="btn-aside" class="btn btn-aside btn-icon" onclick="aside_open( this )">
+        <i class="material-icons">tune</i>
+    </button>
+
+    <!-- main container  -->
+    <div class="container">
+
+        <!-- header -->
+        <header>
+            <div>
+                <h1>ingfokanime</h1>
+                <div>
+                    <p>By Dazveloper</p>
+                    <p>
+                        based on <a target="_blank" href="https://www.myanimelist.net" class="link">myanimelist</a> 
+                        API by <a target="_blank" href="https://www.jikan.moe" class="link">jikan</a>
+                    </p>
+                </div>
+            </div>
+            <figure>
+                <img src="img/wpp3.jpg" alt="">
+            </figure>       
+        </header>
+
+        <!-- navigasi  -->
+        <nav>
+            <div>
+                <div>
+                    <a href="/" class="link">search</a>
+                    <a href="/top.html" class="link">top</a>
+                    <a href="/genres.html" class="link active">genres</a>
+                    <a href="/schedule.html" class="link">schedule</a>
+                    <a href="/seasons.html" class="link">seasons</a>
+                </div>
+            </div>
+
+            <!-- loader animation  -->
+            <div class="loader" id="loader">
+                <div></div>
+            </div>
+        </nav>
+        
+        <!-- inner container  -->
+        <div class="sidemain">
+
+            <!-- aside menu  -->
+            <aside class="">
+                <div class="head">
+                    <h3>Genres</h3>
+                </div>
+                <div>
+                    <button type="button" data-clear="genres" onclick="cleargenres(this)" class="btn btn-t btn-icon btn-clear">
+                        <i class="material-icons-outlined">cleaning_services</i>
+                        clear
+                    </button>
+                    <div class="aside-part">
+                        <h5>Genres</h5>
+                        <div id="genresplace">
+                        </div>
+                    </div>
+                    <div class="aside-part">
+                        <h5>themes</h5>
+                        <div id="themesplace">
+                        </div>
+                    </div>
+                    <div class="aside-part">
+                        <h5>Demographics</h5>
+                        <div id="demographicsplace">
+                        </div>
+                    </div>
+                    <div class="aside-part">
+                        <h5>Order</h5>
+                        <div>
+                            <button type="button" data-clear="order_by" onclick="clearing(this)" class="btn btn-t btn-icon btn-clear">
+                                <i class="material-icons-outlined">cleaning_services</i>
+                                clear
+                            </button>
+                            <button type="button" data-order="rating" onclick="ordering(this)" class="btn btn-t">rating</button>
+                            <button type="button" data-order="score" onclick="ordering(this)" class="btn btn-t">score</button>
+                            <button type="button" data-order="rank" onclick="ordering(this)" class="btn btn-t">rank</button>
+                            <button type="button" data-order="favorites" onclick="ordering(this)" class="btn btn-t">favorites</button>
+                            <button type="button" data-order="popularity" onclick="ordering(this)" class="btn btn-t">popularity</button>
+                        </div>
+                    </div>
+                    <div class="aside-part">
+                        <h5>Sort</h5>
+                        <div>
+                            <button type="button" data-sort="asc" onclick="sorting(this)" class="btn btn-t">Ascending</button>
+                            <button type="button" data-sort="desc" onclick="sorting(this)" class="btn btn-t">Descending</button>
+                        </div>
+                    </div>
+
+                </div>
+            </aside>
+
+            <!-- main  -->
+            <main>
+
+                <!-- result  -->
+                <div class="cards" id="result"></div>
+
+                <button type="button" class="btn disabled" id="loadmore">more</button>
+
+            </main>
+            
+        </div>
+    </div>
+
+    <!-- footer  -->
+    <footer>
+        <p>by <a target="_blank" href="https://www.dazveloper.netlify.app" class="link active">Diaz</a></p>
+        <ul>
+            <li><a target="_blank" href="https://www.facebook.com/diaz.adrian.560/" class="link fab fa-facebook"></a></li>
+            <li><a target="_blank" href="https://www.instagram.com/dazveloper.json/" class="link fab fa-instagram"></a></li>
+            <li><a target="_blank" href="https://github.com/Diaz-adrianz" class="link fab fa-github"></a></li>
+        </ul>
+    </footer>
+
+    <!-- MY JS  -->
+    <script src="js/core.js"></script>
+    <script src="js/component.js"></script>
+
+    <!-- FONT AWESOME ICON  -->
+    <script src="https://kit.fontawesome.com/bc418b707a.js" crossorigin="anonymous"></script>
+
+    <script>
+        function displayingGenres () {
+            let filt = ["genres", "themes", "demographics"]
+
+            filt.forEach( async f => {
+                let place = document.getElementById(f + "place")
+                let str = ""
+
+                let datas = await showGenres(f)
+                datas.forEach( d => {
+                    str += `
+                    <button type="button" data-genres="${d.mal_id}" onclick="genresing(this)" class="btn btn-t genre-menu">${d.name}</button>
+                    `
+                })
+                place.innerHTML += str
+            })
+        }
+
+        displayingGenres()
+    </script>
+
+</body>
+</html>

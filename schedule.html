@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- MY CSS  -->
+    <link rel="stylesheet" href="css/core.css">
+    <link rel="stylesheet" href="css/component.css">
+    <link rel="stylesheet" href="css/media.css">
+
+    <!-- ICON BY GOOGLE  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
+    <title> schedule - ingfokanime | by daz</title>
+</head>
+<body>
+
+    <!-- backdrop  -->
+    <div class="backdrop fade" onclick="bd_close(this)"></div>
+
+    <!-- modal detail  -->
+    <div class="modal fade" id="modaldetail">     
+    </div>
+
+    <!-- aside menu open  -->
+    <button id="btn-aside" class="btn btn-aside btn-icon" onclick="aside_open( this )">
+        <i class="material-icons">tune</i>
+    </button>
+
+    <!-- main container  -->
+    <div class="container">
+
+        <!-- header -->
+        <header>
+            <div>
+                <h1>ingfokanime</h1>
+                <div>
+                    <p>By Dazveloper</p>
+                    <p>
+                        based on <a target="_blank" href="https://www.myanimelist.net" class="link">myanimelist</a> 
+                        API by <a target="_blank" href="https://www.jikan.moe" class="link">jikan</a>
+                    </p>
+                </div>
+            </div>
+            <figure>
+                <img src="img/wpp1.jpg" alt="">
+            </figure>       
+        </header>
+
+        <!-- navigasi  -->
+        <nav>
+            <div>
+                <div>
+                    <a href="/" class="link">search</a>
+                    <a href="/top.html" class="link">top</a>
+                    <a href="/genres.html" class="link">genres</a>
+                    <a href="/schedule.html" class="link active">schedule</a>
+                    <a href="/seasons.html" class="link">seasons</a>
+                </div>
+            </div>
+
+            <!-- loader animation  -->
+            <div class="loader" id="loader">
+                <div></div>
+            </div>
+        </nav>
+        
+
+        <!-- inner container  -->
+        <div class="sidemain">
+
+            <!-- aside menu  -->
+            <aside class="">
+                <div class="head">
+                    <h3>Schedule</h3>
+                </div>
+                <div>
+                    <div id="sfw">
+                        <input type="checkbox" checked>
+                        <button type="button" id="sfwbtn" onclick="sfw(this)" class="btn btn-t active">Hide 18+</button>
+                    </div>
+
+                    <div class="aside-part">
+                        <div>
+                            <button type="button" data-day="sunday" onclick="daying(this)" class="btn btn-t">sunday</button>
+                            <button type="button" data-day="monday" onclick="daying(this)" class="btn btn-t">monday</button>
+                            <button type="button" data-day="tuesday" onclick="daying(this)" class="btn btn-t">tuesday</button>
+                            <button type="button" data-day="wednesday" onclick="daying(this)" class="btn btn-t">wednesday</button>
+                            <button type="button" data-day="thursday" onclick="daying(this)" class="btn btn-t">thursday</button>
+                            <button type="button" data-day="friday" onclick="daying(this)" class="btn btn-t">friday</button>
+                            <button type="button" data-day="saturday" onclick="daying(this)" class="btn btn-t">saturday</button>
+                            <button type="button" data-day="other" onclick="daying(this)" class="btn btn-t">other</button>
+                        </div>
+                    </div>
+
+                </div>
+            </aside>
+
+            <!-- main  -->
+            <main>
+
+                <!-- result  -->
+                <div class="cards" id="result"></div>
+
+                <button type="button" class="btn disabled" id="loadmore">more</button>
+
+            </main>
+            
+        </div>
+    </div>
+
+    <!-- footer  -->
+    <footer>
+        <p>by <a target="_blank" href="https://www.dazveloper.netlify.app" class="link active">Diaz</a></p>
+        <ul>
+            <li><a target="_blank" href="https://www.facebook.com/diaz.adrian.560/" class="link fab fa-facebook"></a></li>
+            <li><a target="_blank" href="https://www.instagram.com/dazveloper.json/" class="link fab fa-instagram"></a></li>
+            <li><a target="_blank" href="https://github.com/Diaz-adrianz" class="link fab fa-github"></a></li>
+        </ul>
+    </footer>
+
+    <!-- MY JS  -->
+    <script src="js/core.js"></script>
+    <script src="js/component.js"></script>
+
+    <!-- FONT AWESOME ICON  -->
+    <script src="https://kit.fontawesome.com/bc418b707a.js" crossorigin="anonymous"></script>
+
+</body>
+</html>

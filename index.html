@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- MY CSS  -->
+    <link rel="stylesheet" href="css/core.css">
+    <link rel="stylesheet" href="css/component.css">
+    <link rel="stylesheet" href="css/media.css">
+
+    <!-- ICON BY GOOGLE  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
+    <title> search - ingfokanime | by daz</title>
+</head>
+<body>
+
+    <!-- backdrop  -->
+    <div class="backdrop fade" onclick="bd_close(this)"></div>
+
+    <!-- modal detail  -->
+    <div class="modal fade" id="modaldetail"></div>
+
+    <!-- aside menu open  -->
+    <button type="button" id="btn-aside" class="btn btn-aside btn-icon" onclick="aside_open( this )">
+        <i class="material-icons">tune</i>
+    </button>
+
+    <!-- main container  -->
+    <div class="container">
+
+        <!-- header -->
+        <header>
+            <div>
+                <h1>ingfokanime</h1>
+                <div>
+                    <p>By Dazveloper</p>
+                    <p>
+                        based on <a target="_blank" href="https://www.myanimelist.net" class="link">myanimelist</a> 
+                        API by <a target="_blank" href="https://www.jikan.moe" class="link">jikan</a>
+                    </p>
+                </div>
+            </div>
+            <figure>
+                <img src="img/wpp.jpg" alt="">
+            </figure>       
+        </header>
+
+        <!-- navigasi  -->
+        <nav>
+            <div>
+                <div>
+                    <a href="/" class="link active">search</a>
+                    <a href="/top.html" class="link">top</a>
+                    <a href="/genres.html" class="link">genres</a>
+                    <a href="/schedule.html" class="link">schedule</a>
+                    <a href="/seasons.html" class="link">seasons</a>
+                </div>
+            </div>
+
+            <!-- loader animation  -->
+            <div class="loader" id="loader">
+                <div></div>
+            </div>
+        </nav>
+        
+
+        <!-- inner container  -->
+        <div class="sidemain">
+
+            <!-- aside menu  -->
+            <aside class="">
+                <div class="head">
+                    <h3>Search</h3>
+                </div>
+                <div>
+                    <div id="sfw">
+                        <input type="checkbox" checked>
+                        <button type="button" id="sfwbtn" onclick="sfw(this)" class="btn btn-t active">Hide 18+</button>
+                    </div>
+                    
+                    <div class="aside-part">
+                        <h5>Path</h5>
+                        <div>
+                            <button type="button" data-path="anime" onclick="pathing(this)" class="btn btn-t active">anime</button>
+                            <button type="button" data-path="characters" onclick="pathing(this)" class="btn btn-t">characters</button>
+                        </div>
+                    </div>
+                    <div class="aside-part">
+                        <h5>Order</h5>
+                        <div>
+                            <button type="button" data-clear="order_by" onclick="clearing(this)" class="btn btn-t btn-icon btn-clear">
+                                <i class="material-icons-outlined">cleaning_services</i>
+                                clear
+                            </button>
+                            <button type="button" data-order="rating" onclick="ordering(this)" class="btn btn-t">rating</button>
+                            <button type="button" data-order="score" onclick="ordering(this)" class="btn btn-t">score</button>
+                            <button type="button" data-order="rank" onclick="ordering(this)" class="btn btn-t">rank</button>
+                            <button type="button" data-order="favorites" onclick="ordering(this)" class="btn btn-t">favorites</button>
+                            <button type="button" data-order="popularity" onclick="ordering(this)" class="btn btn-t">popularity</button>
+                        </div>
+                    </div>
+                    <div class="aside-part">
+                        <h5>Sort</h5>
+                        <div>
+                            <button type="button" data-sort="asc" onclick="sorting(this)" class="btn btn-t">Ascending</button>
+                            <button type="button" data-sort="desc" onclick="sorting(this)" class="btn btn-t">Descending</button>
+                        </div>
+                    </div>
+
+                </div>
+            </aside>
+
+            <!-- main  -->
+            <main>
+
+                <!-- form pencarian  -->
+                <form action="" class="search" onsubmit="searching(this, event)">
+                    <input type="text" name="key" id="" placeholder="Cari disini...">
+                    <button type="submit" class="btn btn-icon">
+                        <i class="material-icons">search</i>
+                    </button>
+                </form>
+
+                <!-- result  -->
+                <div class="cards" id="result">
+                    
+                    <!-- <div class="card" onclick="modal_open(this)" data-id="" data-modal-target="detailanime">
+                        <figure>
+                            <img src="img/sky.jpg" alt="">
+                        </figure>
+                        <div class="tooltip" data-title="teks">
+                            <h5>Teks Negosiasi Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat, dolores?</h5>
+                            <div class="card-attrs">
+                                <span>
+                                    <i class="material-icons-outlined">movie</i>
+                                    TV
+                                </span>
+                                <span>
+                                    <i class="material-icons-outlined">play_arrow</i>
+                                    255 eps
+                                </span>
+                                <span>
+                                    <i class="material-icons outlined">star</i>
+                                    8.86
+                                </span>
+                            </div>
+                            <span>Action | drama</span>
+                        </div>
+                    </div> -->
+                </div>
+
+                <button type="button" class="btn disabled" id="loadmore">more</button>
+
+            </main>
+            
+        </div>
+    </div>
+
+    <!-- footer  -->
+    <footer>
+        <p>by <a target="_blank" href="https://www.dazveloper.netlify.app" class="link active">Diaz</a></p>
+        <ul>
+            <li><a target="_blank" href="https://www.facebook.com/diaz.adrian.560/" class="link fab fa-facebook"></a></li>
+            <li><a target="_blank" href="https://www.instagram.com/dazveloper.json/" class="link fab fa-instagram"></a></li>
+            <li><a target="_blank" href="https://github.com/Diaz-adrianz" class="link fab fa-github"></a></li>
+        </ul>
+    </footer>
+
+    <!-- MY JS  -->
+    <script src="js/core.js"></script>
+    <script src="js/component.js"></script>
+
+    <!-- FONT AWESOME ICON  -->
+    <script src="https://kit.fontawesome.com/bc418b707a.js" crossorigin="anonymous"></script>
+
+</body>
+</html>

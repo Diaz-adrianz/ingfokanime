@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- MY CSS  -->
+    <link rel="stylesheet" href="css/core.css">
+    <link rel="stylesheet" href="css/component.css">
+    <link rel="stylesheet" href="css/media.css">
+
+    <!-- ICON BY GOOGLE  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
+    <title> seasons - ingfokanime | by daz</title>
+</head>
+<body>
+
+    <!-- backdrop  -->
+    <div class="backdrop fade" onclick="bd_close(this)"></div>
+
+    <!-- modal detail  -->
+    <div class="modal fade" id="modaldetail">     
+    </div>
+
+    <!-- aside menu open  -->
+    <button id="btn-aside" class="btn btn-aside btn-icon" onclick="aside_open( this )">
+        <i class="material-icons">tune</i>
+    </button>
+
+    <!-- main container  -->
+    <div class="container">
+
+        <!-- header -->
+        <header>
+            <div>
+                <h1>ingfokanime</h1>
+                <div>
+                    <p>By Dazveloper</p>
+                    <p>
+                        based on <a target="_blank" href="https://www.myanimelist.net" class="link">myanimelist</a> 
+                        API by <a target="_blank" href="https://www.jikan.moe" class="link">jikan</a>
+                    </p>
+                </div>
+            </div>
+            <figure>
+                <img src="img/wpp5.jpg" alt="">
+            </figure>       
+        </header>
+
+        <!-- navigasi  -->
+        <nav>
+            <div>
+                <div>
+                    <a href="/" class="link">search</a>
+                    <a href="/top.html" class="link">top</a>
+                    <a href="/genres.html" class="link">genres</a>
+                    <a href="/schedule.html" class="link">schedule</a>
+                    <a href="/seasons.html" class="link active">seasons</a>
+                </div>
+            </div>
+
+            <!-- loader animation  -->
+            <div class="loader" id="loader">
+                <div></div>
+            </div>
+        </nav>
+        
+
+        <!-- inner container  -->
+        <div class="sidemain">
+
+            <!-- aside menu  -->
+            <aside class="">
+                <div class="head">
+                    <h3>Seasons</h3>
+                </div>
+                <div>
+
+                    <div class="aside-part">
+                        <select name="year" id="year">
+                        </select>
+                        <select name="season" id="season">
+                            <option value="winter" selected>winter</option>
+                            <option value="spring">spring</option>
+                            <option value="summer">summer</option>
+                            <option value="fall">fall</option>
+                        </select>
+                        <button type="button" id="getseason" class="btn" onclick="seasoning()">Get it</button>
+                    </div>
+
+                </div>
+            </aside>
+
+            <!-- main  -->
+            <main>
+
+                <!-- result  -->
+                <div class="cards" id="result"></div>
+
+                <button type="button" class="btn disabled" id="loadmore">more</button>
+
+            </main>
+            
+        </div>
+    </div>
+
+    <!-- footer  -->
+    <footer>
+        <p>by <a target="_blank" href="https://www.dazveloper.netlify.app" class="link active">Diaz</a></p>
+        <ul>
+            <li><a target="_blank" href="https://www.facebook.com/diaz.adrian.560/" class="link fab fa-facebook"></a></li>
+            <li><a target="_blank" href="https://www.instagram.com/dazveloper.json/" class="link fab fa-instagram"></a></li>
+            <li><a target="_blank" href="https://github.com/Diaz-adrianz" class="link fab fa-github"></a></li>
+        </ul>
+    </footer>
+
+    <!-- MY JS  -->
+    <script src="js/core.js"></script>
+    <script src="js/component.js"></script>
+
+    <!-- FONT AWESOME ICON  -->
+    <script src="https://kit.fontawesome.com/bc418b707a.js" crossorigin="anonymous"></script>
+
+    <script>
+        async function displayingYears() {
+            let select = document.getElementById("year")
+            let years = await showSeasons()
+            select.innerHTML = ""
+
+            years.forEach(y => {
+                select.innerHTML += `
+                <option value="${y}">${y}</option>
+                `
+            });
+        }
+        displayingYears()
+    </script>
+
+</body>
+</html>
