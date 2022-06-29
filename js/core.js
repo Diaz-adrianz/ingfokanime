@@ -62,7 +62,7 @@ let genreSelected = []
 
 // GET DATA 
 function fetching ( obj ) {
-    console.log(obj.endPoint + obj.path + obj.queries())
+//     console.log(obj.endPoint + obj.path + obj.queries())
     let datas = fetch(obj.endPoint + obj.path + obj.queries())
                 .then( res => {
 
@@ -96,7 +96,7 @@ async function getting () {
 
     if ( !datas ) return false
 
-    cl(datas)
+//     cl(datas)
     displaying( url.path, datas.data, true)
     tooltips()
 
@@ -157,7 +157,7 @@ async function gettingChars ( el ) {
     charObj.query = {}
 
     let charDatas = await fetching(charObj)
-    console.log(charDatas)
+//     console.log(charDatas)
 
     let charCard = ""
     if ( charDatas.data.length != 0 ) {
@@ -218,7 +218,7 @@ function toping( el ) {
     charRank = 1
     delete url.query.q 
     
-    cl(url)
+//     cl(url)
     getting()
 
     html.scrollTop = 0
