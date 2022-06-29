@@ -85,7 +85,7 @@ body.noscroll {
     box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.2);
 }
 .btn-aside i {
-    font-size: 2em !important;
+    font-size: 2.8em !important;
 }
 .sidemain aside {
     flex: 1;
@@ -303,5 +303,14 @@ select:focus option:hover {
     }
     to {
     opacity: 0;
+    }
+}
+@keyframes pulse {
+    20% {
+      transform: scale(1.1)
+    } 50% {
+      transform: scale(.95)
+    } 90% {
+      transform: scale(1.1)
     }
 }
