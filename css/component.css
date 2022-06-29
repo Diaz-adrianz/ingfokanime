@@ -1,0 +1,468 @@
+header {
+    width: 100%;
+    display: flex;
+    position: relative;
+}
+header figure {
+    width: 100%;
+    height: 200px;
+}
+header > div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+    color: var(--white);
+    background-color: rgba(var(--black-rgb), .7);
+}
+header > div > div {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    padding: 1em .2em .2em;
+    justify-content: space-between;
+    background: linear-gradient(rgba(0,0,0,0), black 90%);
+}
+header h1 {
+    font-size: 2.5em;
+    text-transform: uppercase;
+    background: -webkit-linear-gradient( 80deg, var(--accent) 10%, var(--white), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+header .link {
+    color: var(--accent);
+}
+
+/* nav  */
+nav {
+    width: 100%;
+    position: sticky;
+    top: 0;
+    overflow: hidden;
+    z-index: 70;
+    background-color: var(--blue);
+}
+nav > div:first-child {
+    overflow: auto;
+    width: 100%;
+    padding: .5em;
+}
+nav > div:first-child > div {
+    display: flex;
+    gap: .5em;
+    margin: auto;
+}
+nav .link {
+    padding: 0 .75em .2em;
+    border-radius: 50rem;
+    color: var(--white);
+}
+nav .link:hover, nav .link.active {
+    color: var(--black);
+    font-weight: bold;
+    background-color: var(--silver);
+}
+
+.loader {
+    width: 100%;
+    height: 5px;
+    overflow: hidden;
+    background-color: var(--silver);
+}
+.loader div {
+    position: absolute;
+    width: 30%;
+    height: inherit;
+    left: -30%;
+    display: none;
+    background-color: var(--accent);
+}
+.loader.on div {
+    display: block;
+    animation: load 1s ease-in-out infinite;
+}
+
+@keyframes load {
+    50% {
+      width: 50%;
+    }
+    100% {
+      width: 70%;
+      left: 100%;
+    }
+  }
+
+/* aside  */
+aside .btn {
+    margin-bottom: .4em;
+    padding: 0;
+    text-align: left;
+}
+aside .aside-part {
+    margin-bottom: 2em;
+}
+aside h5 {
+    padding: 0 .5em;
+    margin-bottom: .5em;
+    color: blue;
+    border-left: 2px solid var(--blue);
+}
+aside .head {
+    width: 100%;
+    padding: .5em 1em;
+    margin-bottom: 1em;
+    background-color: var(--blue);
+    color: var(--white);
+    display: none;
+}
+#sfw {
+    display: flex;
+    align-items: center;
+    gap: .5em;
+    margin-bottom: 2em;
+}
+#sfw input {
+    accent-color: var(--accent);
+    margin-bottom: .2em;
+    width: fit-content;
+}
+
+/* pencarian  */
+.search {
+    display: flex;
+    max-width: 400px;
+    margin: auto;
+    background-color: var(--silver);
+    overflow: hidden;
+    padding: .5em;
+    border-radius: 50rem;
+}
+.search input {
+    border: none;
+    padding: 0 1em;
+}
+.search .btn{
+    padding: .25em 1.25em;
+    border-radius: 50rem;
+}
+
+/* cards  */
+#loadmore {
+    width: 100%;
+    margin-top: 5em;
+}
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    flex-wrap: wrap;
+    gap: 1.5em;
+    margin-top: 2em;
+}
+.card {
+    width: 100%;
+    max-width: 20em;
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    cursor: pointer;
+    transition: .2s;
+}
+.card > div {
+    width: 15em;
+    display: flex;
+    height: 5em;
+    padding: .2em 0;
+    flex-direction: column;
+    position: relative;
+    justify-content: center;
+    --top: 100%;
+    --left: 0;
+    --anim: fade;
+}
+.tooltip::after {
+    content: attr(data-title);
+    position: absolute;
+    top: var(--top);
+    left: var(--left);
+    font-size: .85em;
+    padding: .1em .75em .2em;
+    border-radius: .3em;
+    color: var(--white);
+    background: rgba(var(--glass), 0.7);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px) !important;
+    border: 1px solid rgba(var(--silver-rgba), 0.1);
+    z-index: 999;
+    display: none;
+    pointer-events: none;
+    white-space: nowrap;
+    animation: var(--anim) 0.3s forwards;
+}
+.tooltip.show:after {
+    display: block;
+}
+.card figure {
+    width: 4em;
+    height: 5em;   
+    background-color: var(--secondary);
+}
+.card figure img {
+    transition: .2s;
+}
+.card:hover figure img {
+    transform: scale(1.1);
+}
+.card figure span {
+    position: absolute;
+    width: 100%;
+    font-size: .65em ;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    display: block;
+    background-color: var(--accent);
+    color: var(--white);
+}
+.card h5 {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-weight: normal;
+    color: var(--blue);
+    margin-bottom: auto;
+    position: relative;
+}
+.card .card-attrs {
+    width: 100%;
+    overflow: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .4em 1.1em ;
+    margin-bottom: .1em;
+}
+.card span {
+    display: flex;
+    font-size: .8em;
+    gap: .4em;
+    color: var(--secondary);
+    align-items: flex-end;
+}
+.card-attrs span i {
+    font-size: 1.2em;
+}
+/* modal  */
+.modal {
+    width: 96vw;
+    max-width: 768px;
+    bottom: 0;
+    height: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 1em 1em 0 0;
+    position: fixed;
+    background-color: var(--white);
+    box-shadow: 0 0 10px 3px rgba(var(--black-rgb), .5);
+    z-index: 99;
+    display: none;
+    overflow: auto;
+    transition: .3s;
+    height: 97vh;
+}
+.modal.show {
+    display: block;
+}
+.modal::-webkit-scrollbar {
+    display: none;
+}
+.modal .head {
+    background-color: var(--blue);
+    width: 100%;
+    position: sticky;
+    top: 0;
+    gap: 1em;
+    z-index: 10;
+}
+.modal .head > div:first-child {
+    padding: .5em;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    color: var(--white);
+}
+.modal .head .loader {
+    position: relative;
+    z-index: 5;
+    height: 3px;
+}
+.anime-title {
+    width: 100%;
+    overflow: auto;
+    position: relative;
+}
+.anime-title::-webkit-scrollbar {
+    height: 2px;
+}
+.anime-title h5 {
+    white-space: nowrap;
+}
+.modal .head > div:first-child:after {
+    position: absolute;
+    content: "";
+    top: 0;
+    right: 0;
+    width: 50px;
+    height: 100%;
+    background: linear-gradient(to left, var(--blue) 30%, rgba(var(--black-rgb), 0));
+}
+.modal .head .btn {
+    padding: 0;
+    color: var(--white);
+}
+.modal .modal-in {
+    height: 100%;
+    overflow: auto;
+}
+
+.modal .content {
+    padding: 1em 1.25em 5em;
+    width: 100%;
+    display: flex;
+    gap: 2em;
+}
+.modal .left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+.anime-img {
+    width: 12em;
+    height: 15em;
+    background-color: var(--secondary);
+}
+.stats {
+    flex: 1;
+    padding: 0 2em;
+}
+.stats span {
+    display: block;
+    width: 7em;
+    margin: auto;
+    margin-bottom: 1em;
+    text-align: center;
+}
+.stats .type {
+    border-radius: 50rem;
+    padding-bottom: .15em;
+    background-color: var(--accent);
+    color: var(--white);
+    font-size: .8em;
+}
+.stats .isi {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.right > div > h5 {
+    padding: 0 .5em;
+    color: var(--blue);
+    margin-bottom: .75em;
+    border-left: 3px solid var(--blue);
+}
+.right .cards {
+    margin-top: 0;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: .5em 1.5em;
+}
+.right .card {
+    cursor: default;
+}
+.right .card > div h5 {
+    font-size: 1em;
+    margin-bottom: .4em;
+    color: var(--black);
+    font-weight: bold;
+}
+.right .card > div {
+    width: 12em;
+}
+.right .card figure{
+    height: 4em;
+}
+.anime-synopsys, .anime-background, .anime-chars, .anime-info, .anime-link,
+.char-about, .char-anime, .char-manga, .char-seiyuu, .char-link {
+    margin-bottom: 3em;
+    position: relative;
+}
+
+.anime-info > div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .75em 3em;
+}
+.anime-info span {
+    display: flex;
+    min-width: 200px;
+}
+.anime-info span .type {
+    min-width: 100px;
+    font-weight: bold;
+}
+.anime-link > div {
+    display: flex;
+    gap: 1em;
+}
+.count-chars {
+    top: .4em;
+    right: 0;
+    color: var(--secondary);
+    display: inline;
+    font-size: .9em;
+    position: absolute;
+}
+
+/* foooter  */
+footer {
+    width: 100%;
+    padding: 1em 1.25em 2em;
+    background-color: var(--black);
+    /* display: flex; */
+    text-align: center;
+    color: var(--white);
+}
+footer ul {
+    width: 100%;
+    justify-content: center;
+    list-style: none;
+    display: flex;
+    gap: 1em;
+    margin-top: .5em;
+}
+
+/* error empty  */
+.empty, .err {
+    width: 100%;
+    min-width: 100px;
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+}
+.empty img, .err img {
+    width: 50%
+}
+.empty figcaption, .err figcaption {
+    color: var(--blue);
+    margin-top: 1em;
+}

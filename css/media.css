@@ -1,0 +1,52 @@
+@media only screen and ( max-width: 768px ) {
+    * {
+        font-size: 12px;
+    }
+    #btn-aside {
+        display: flex;
+    }
+    .sidemain aside {
+        position: fixed;
+        z-index: 99;
+        background-color: var(--silver);
+        width: 60%;
+        height: 100vh;
+        max-width: 250px;
+        top: 0;
+        left: 0;
+        transform: translateX(-100%);
+        transition: transform .2s;
+    }
+    aside.show {
+        transform: translateX(0);
+    }
+    aside .head {
+        display: block;
+    }
+    aside > div:last-child {
+        height: 85%;
+        max-height: 85%;
+        overflow: auto;
+        padding: 1em;
+    }
+    aside > div:last-child::-webkit-scrollbar-thumb {
+        background: var(--accent, #393e46);
+    }
+    header nav {
+        gap: 1em;
+    }
+    header .btn {
+        display: flex;
+    }
+    .modal .content {
+        flex-direction: column;
+    }
+    .modal .left {
+        flex-direction: row;
+    }
+}
+@media only screen and ( max-width: 300px ) {
+    * {
+        font-size: 10px;
+    }
+}
