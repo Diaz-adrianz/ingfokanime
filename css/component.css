@@ -265,7 +265,7 @@ aside .head {
 /* modal  */
 .modal {
     width: 96vw;
-    max-width: 992px;
+    max-width: 820px;
     bottom: 0;
     height: 0;
     left: 50%;
