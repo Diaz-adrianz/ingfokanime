@@ -42,7 +42,7 @@ overflow-x: hidden;
 body {
     position: relative;
     background-color: var(--bg);
-    overflow-x: hidden;
+/*     overflow-x: hidden; */
 }
 body.noscroll {
     overflow-y: hidden;
@@ -103,6 +103,7 @@ aside > div:last-child {
 
 .sidemain main {
     flex: 4;
+    overflow-x: hidden;
 }
 /* link  */
 .link {
